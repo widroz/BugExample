@@ -64,7 +64,7 @@ export default function CutSizesChart({min,max,selector}) {
                 let initialColumns = numberOfColumns(n);
     
                 for (let cutSize = 1; cutSize <= initialColumns - 2; cutSize++) {
-                    if (piecesCut(cutSize) % (initialColumns - cutSize) === 0 && (n%selector===0)) return cutSize;
+                    if ((piecesCut(cutSize) % (initialColumns - cutSize) === 0) && (n%selector===0)) return cutSize;
                 }
             }
             return 0;
@@ -93,7 +93,7 @@ export default function CutSizesChart({min,max,selector}) {
         setLabels(Array.apply(null, {length: max}).map(Number.call, Number))
         console.log("LABELS" + labels);
         assignNewCutSizes()
-    }, [min, max]);
+    }, [min, max,selector]);
 
     useEffect(() => {
         //set only cutsData.datasets[0].data to the cutSizes array, the rest of cutsData object remains the same
