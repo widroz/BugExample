@@ -1,40 +1,26 @@
-import React from 'react';
-import { Line } from 'react-chartjs-2';
+import CutSizesChart from "./components/CutSizesChart";
+import MaxInput from "./components/MaxInput";
+import MinInput from "./components/MinInput";
+import { useState } from "react";
+import SelectorInput from "./components/SelectorInput";
 
-export const options = {
-  responsive: true,
-  plugins: {
-    legend: {
-      position: 'top',
-    },
-    title: {
-      display: true,
-      text: 'Chart.js Line Chart',
-    },
-  },
+
+const App = () => {
+
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(20);
+  const[selector, setSelector] = useState(1);
+
+  return (
+    <div>
+      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around',alignItems:'center', margin:'2rem'}}>
+      <MinInput min={min} setMin={setMin}></MinInput>
+      <MaxInput max={max} setMax={setMax}></MaxInput>
+      <SelectorInput selector={selector} setSelector={setSelector}></SelectorInput>
+      </div>
+      <CutSizesChart min={min} max={max} selector={selector}></CutSizesChart>
+    </div>
+  );
 };
 
-const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
-
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Dataset 1',
-      data: [1,2,3,4,5,6,7,8,9,10,11,12],
-      borderColor: 'rgb(255, 99, 132)',
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
-    },
-    {
-      label: 'Dataset 2',
-      data: [1,2,3,4,5,6,7,8,9,10,11,12],
-      borderColor: 'rgb(53, 162, 235)',
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
-    },
-  ],
-};
-
-export default function App() {
-  return <Line options={options} data={data} />;
-}
-
+export default App;
