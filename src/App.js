@@ -3,7 +3,8 @@ import MaxInput from "./components/MaxInput";
 import MinInput from "./components/MinInput";
 import { useState } from "react";
 import SelectorInput from "./components/SelectorInput";
-
+import './App.css'
+import Bootstrap from "./components/Bootstrap";
 
 const App = () => {
 
@@ -13,12 +14,14 @@ const App = () => {
 
   return (
     <div>
-      <div style={{display:'flex', flexDirection:'column', justifyContent:'space-around',alignItems:'center', margin:'2rem'}}>
+      <Bootstrap/>
+      <div className="inputs-div">
       <MinInput min={min} setMin={setMin}></MinInput>
       <MaxInput max={max} setMax={setMax}></MaxInput>
       <SelectorInput selector={selector} setSelector={setSelector}></SelectorInput>
       </div>
       <CutSizesChart min={min} max={max} selector={selector}></CutSizesChart>
+
     </div>
   );
 };

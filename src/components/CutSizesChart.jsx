@@ -79,8 +79,6 @@ export default function CutSizesChart({min,max,selector}) {
     }
     
     
-    
-    
 
     function assignNewCutSizes() {
         setCutSizes(findCuts(min, max, selector));
@@ -116,9 +114,6 @@ export default function CutSizesChart({min,max,selector}) {
     return (
         <div>
             {labels && cutsData && <Line options={options} data={cutsData} />}
-            {min}
-            {selector}
-
         </div>
     );
 };
