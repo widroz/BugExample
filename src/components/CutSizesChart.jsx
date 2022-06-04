@@ -11,6 +11,7 @@ import {
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
 
+import { Bar } from "react-chartjs-2";
 
 ChartJS.register(
     CategoryScale,
@@ -44,7 +45,6 @@ export default function CutSizesChart({min,max,selector}) {
 
     function findCuts(min, max, selector) {
 
-
         function findCutBruteForce(n) {
     
             function numberOfColumns(n) {
@@ -54,8 +54,6 @@ export default function CutSizesChart({min,max,selector}) {
             function piecesCut(cutSize) {
                 return 2 * cutSize - 1;
             }
-    
-    
     
             if (n <= 2) return 0;
     

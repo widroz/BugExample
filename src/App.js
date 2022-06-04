@@ -2,7 +2,7 @@ import CutSizesChart from "./components/CutSizesChart";
 import { useState } from "react";
 import './App.css'
 import Bootstrap from "./components/Bootstrap";
-import InputField from "./components/InputField";
+import Controls from "./components/Controls";
 
 const App = () => {
 
@@ -13,11 +13,7 @@ const App = () => {
   return (
     <div>
       <Bootstrap/>
-      <div className="inputs-div">
-      <InputField title="Min:" inputValue={min} setInputValue={setMin}></InputField>
-      <InputField title="Max:" inputValue={max} setInputValue={setMax}></InputField>
-      <InputField title="Selector:" inputValue={selector} setInputValue={setSelector}></InputField>
-      </div>
+      <Controls min={min} max={max} selector={selector} setSelector={setSelector} setMin={setMin} setMax={setMax}/>
       <CutSizesChart min={min} max={max} selector={selector}></CutSizesChart>
 
     </div>
