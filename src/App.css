@@ -11,6 +11,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin-bottom: 1vw;
 }
 
 
@@ -26,14 +27,15 @@ input {
 
     color: #757575;
     font-size: calc(24px + 46 * ((100vw - 600px) / 800));;
+
 }
 
 .navigation-bar{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
-    padding: 1vw;
+    padding: 2vw;
     font-size: calc(40px + 46 * ((40vw - 600px) / 800));
 }
 

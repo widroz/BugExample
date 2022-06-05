@@ -54,6 +54,18 @@ export default function Pieces() {
     return divs;
   }
 
+  function renderInitialPieceAsSolved() {
+    const divs = [];
+    for (let i = 1; i < n; i += 2) {
+      divs.push(<div className="pieces-column" key={i}>
+        <div className="piece solved">{ }</div>
+        <div className="piece solved">{ }</div>
+      </div>)
+    }
+    if (n % 2 === 1) divs.push(<div className="last-piece piece solved" key={n}>{ }</div>)
+    return divs;
+  }
+
   function renderInitialPieceWithCut() {
     const columns = numberOfColumns(n);
     const divs = [];
@@ -89,7 +101,10 @@ export default function Pieces() {
       }
       return rows;
     }
-    else return renderInitialPiece();
+    else {
+      if(n%2===0 && n!==2)return renderInitialPieceAsSolved(); //TODO: Check why 2 appears as a solved piece
+      else return renderInitialPiece();
+    }
   }
 
 
