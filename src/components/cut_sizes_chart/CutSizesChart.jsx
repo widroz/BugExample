@@ -10,8 +10,9 @@ import {
     Legend,
 } from 'chart.js'
 import { Line } from 'react-chartjs-2'
-
-import { Bar } from "react-chartjs-2";
+import Controls from "./Controls";
+import Bootstrap from "../Bootstrap";
+import NavigationBar from "../navigation/NavigationBar";
 
 ChartJS.register(
     CategoryScale,
@@ -27,21 +28,24 @@ export const options = {
     responsive: true,
     plugins: {
         legend: {
-            position: "top",
+            position: "bottom",
         },
         title: {
-            display: true,
+            display: false,
             text: "Cut Sizes Chart",
         },
     },
 };
 
 
-export default function CutSizesChart({min,max,selector}) {
+export default function CutSizesChart() {
 
     const [labels, setLabels] = useState([]);
     const [cutsData, setCutsData] = useState();
     const [cutSizes, setCutSizes] = useState([]);
+    const [min, setMin] = useState(0);
+    const [max, setMax] = useState(30);
+    const[selector, setSelector] = useState(1);
 
     function findCuts(min, max, selector) {
 
@@ -99,8 +103,7 @@ export default function CutSizesChart({min,max,selector}) {
                 {
                     label: "Cut Sizes",
                     data: cutSizes,
-                    borderColor: "rgb(255, 99, 132)",
-                    backgroundColor: "rgba(255, 99, 132, 0.5)",
+                    borderColor: "rgba(194, 24, 91, 0.7)",
                 },
             ],
         }
@@ -111,6 +114,9 @@ export default function CutSizesChart({min,max,selector}) {
 
     return (
         <div>
+            <Bootstrap/>
+            <NavigationBar/>
+            <Controls min={min} max={max} selector={selector} setSelector={setSelector} setMin={setMin} setMax={setMax}/>
             {labels && cutsData && <Line options={options} data={cutsData} />}
         </div>
     );
